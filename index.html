@@ -12,6 +12,14 @@
         <input type="text" id="taskInput" placeholder="Adicione uma nova tarefa">
         <button onclick="addTask()">Adicionar Tarefa</button>
         <ul id="taskList"></ul>
+
+        <!-- Temporizador -->
+        <div>
+            <label for="time">Definir Temporizador (em minutos):</label>
+            <input type="number" id="timerInput" min="1" placeholder="Minutos">
+            <button onclick="startTimer()">Iniciar Temporizador</button>
+            <p id="timeRemaining">Tempo Restante: 00:00</p>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>
