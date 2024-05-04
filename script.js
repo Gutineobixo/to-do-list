@@ -296,3 +296,10 @@ function setTextSize(size) {
         selection.removeAllRanges(); // Limpa a seleção após aplicar o estilo
     }
 }
+document.getElementById('colorPicker').addEventListener('focus', function() {
+    this.style.transform = 'scale(1.1)';
+});
+
+document.getElementById('colorPicker').addEventListener('blur', function() {
+    this.style.transform = 'scale(1)';
+});

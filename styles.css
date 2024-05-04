@@ -167,7 +167,13 @@ button:hover {
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     -webkit-appearance: none;  /* Desativa a aparência padrão no WebKit primeiro */
     appearance: none;          /* Adiciona a propriedade padrão depois */
+    transition: transform 0.3s ease-in-out;
+    transform: scale(1); /* Estado normal */
 }
+#colorPicker:focus {
+    transform: scale(1.1); /* Ligeiramente maior quando focado */
+}
+
 
 /* Estilo para a parte que se clica para abrir a paleta de cores */
 #colorPicker::-webkit-color-swatch-wrapper {
