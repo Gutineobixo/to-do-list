@@ -79,8 +79,36 @@ function insertSymbol(symbol) {
     document.execCommand('insertText', false, symbol + ' ');
 }
 
-function highlightText() {
-    document.execCommand('hiliteColor', false, 'yellow');
+document.getElementById('highlightButton').addEventListener('click', toggleHighlight);
+
+function toggleHighlight() {
+    let selection = window.getSelection();
+    if (selection.rangeCount > 0) {
+        let range = selection.getRangeAt(0);
+        let selectedText = range.toString().trim();
+
+        if (!selectedText) {
+            return; // Não faz nada se não houver texto selecionado
+        }
+
+        let span = range.startContainer.parentElement;
+
+        // Verifica se o elemento selecionado já é um span com marcação amarela
+        if (span.nodeName === "SPAN" && span.style.backgroundColor === "yellow") {
+            // Remover a marcação substituindo o span pelo seu conteúdo
+            let text = span.textContent;
+            let parent = span.parentNode;
+            parent.insertBefore(document.createTextNode(text), span);
+            parent.removeChild(span);
+            selection.removeAllRanges(); // Limpa a seleção
+        } else {
+            // Criar um novo span para o texto selecionado com a marcação amarela
+            let newSpan = document.createElement("span");
+            newSpan.style.backgroundColor = "yellow";
+            range.surroundContents(newSpan);
+            selection.removeAllRanges(); // Limpa a seleção após aplicar a marcação
+        }
+    }
 }
 
 function changeTextColor(color) {
