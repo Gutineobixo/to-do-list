@@ -11,21 +11,21 @@ function addTask() {
         var listItem = document.createElement('li');
         var taskTextSpan = document.createElement('span');
         taskTextSpan.textContent = newTask;
-        
+
         var deleteButton = document.createElement('button');
         deleteButton.textContent = 'Deletar';
         deleteButton.className = 'delete-btn';
         deleteButton.onclick = function() {
             listItem.remove();
         };
-        
+
         var completeButton = document.createElement('button');
         completeButton.textContent = 'Concluir';
         completeButton.className = 'complete-btn';
         completeButton.onclick = function() {
             listItem.classList.toggle('completed');
         };
-        
+
         var actionsSpan = document.createElement('span');
         actionsSpan.className = 'task-actions';
         actionsSpan.appendChild(completeButton);
@@ -33,7 +33,7 @@ function addTask() {
 
         listItem.appendChild(taskTextSpan);
         listItem.appendChild(actionsSpan);
-        
+
         document.getElementById('taskList').appendChild(listItem);
         input.value = ''; // Limpa o input após adicionar
     }
@@ -61,4 +61,28 @@ function startTimer() {
             time--;
         }
     }, 1000);
+}
+
+// Notes handling
+document.getElementById('notesInput').addEventListener('input', function() {
+    localStorage.setItem('notes', this.value);
+});
+
+window.onload = function() {
+    var savedNotes = localStorage.getItem('notes');
+    if (savedNotes) {
+        document.getElementById('notesInput').value = savedNotes;
+    }
+};
+
+function insertSymbol(symbol) {
+    document.execCommand('insertText', false, symbol + ' ');
+}
+
+function highlightText() {
+    document.execCommand('hiliteColor', false, 'yellow');
+}
+
+function changeTextColor(color) {
+    document.execCommand('foreColor', false, color);
 }

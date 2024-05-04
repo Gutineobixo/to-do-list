@@ -6,6 +6,7 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
+    position: relative;
 }
 
 .container {
@@ -85,4 +86,46 @@ button:hover {
 #timeRemaining {
     font-size: 16px;
     color: #333;
+}
+
+.notes-sidebar {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 200px;
+    height: 100vh;
+    background-color: #fff;
+    box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+#notesInput {
+    flex: 1;
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    resize: none;
+    color: #000; /* Default text color */
+    background-color: #fff; /* Default background color */
+}
+
+.toolbar button, .toolbar input[type="color"] {
+    margin-right: 5px;
+}
+
+.toolbar {
+    margin-bottom: 10px;
+}
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
 }
