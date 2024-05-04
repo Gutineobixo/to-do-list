@@ -1,5 +1,5 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: Gothic Intrigue;
     background: #f4f4f4;
     display: flex;
     justify-content: center;
@@ -92,13 +92,18 @@ button:hover {
     position: absolute;
     right: 0;
     top: 0;
-    width: 50vh;
+    width: 350px; /* Largura inicial */
+    min-width: 350px; /* Largura mínima de 350px */
+    max-width: 500px; /* Largura máxima de 500px */
     height: 100vh;
     background-color: #fff;
     box-shadow: -2px 0 5px rgba(0,0,0,0.1);
     padding: 20px;
     display: flex;
     flex-direction: column;
+    resize: horizontal; /* Permite redimensionamento apenas do sidebar */
+    overflow: hidden; /* Evita overflow */
+    transition: width 0.1s linear; /* Transição suave para a largura */
 }
 
 #notesInput {
@@ -107,10 +112,13 @@ button:hover {
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
-    resize: none;
-    color: #000; /* Default text color */
-    background-color: #fff; /* Default background color */
+    overflow: auto; /* Garante que o conteúdo seja rolável se maior que a caixa */
+    width: 100%; /* Sempre se ajusta à largura do contêiner */
+    color: #000; /* Cor padrão do texto */
+    background-color: #fff; /* Cor padrão do fundo */
 }
+
+
 
 .toolbar button, .toolbar input[type="color"] {
     margin-right: 5px;
