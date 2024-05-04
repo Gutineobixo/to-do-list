@@ -248,13 +248,6 @@ function toggleBold() {
     }
 }
 
-
-
-
-
-
-
-
 function limpar() {
     // Limpa todas as tarefas do DOM
     document.getElementById('taskList').innerHTML = '';
@@ -270,4 +263,36 @@ function limpar() {
     clearInterval(timerId);
     document.getElementById('timeRemaining').innerText = 'Tempo Restante: 00:00';
     document.getElementById('timerInput').value = '';
+}
+function setTextSize(size) {
+    let selection = window.getSelection();
+    if (selection.rangeCount > 0 && selection.toString().trim() !== '') {
+        let range = selection.getRangeAt(0);
+        let selectedText = range.toString().trim();
+        let span = document.createElement("span");
+        
+        // Define o tamanho do texto conforme o botão pressionado
+        switch (size) {
+            case 'h1':
+                span.style.fontSize = '2em'; // Tamanho grande
+                break;
+            case 'h2':
+                span.style.fontSize = '1.5em'; // Tamanho médio
+                break;
+            case 'h3':
+                span.style.fontSize = '1.2em'; // Tamanho pequeno
+                break;
+            case 'p':
+                span.style.fontSize = '1em'; // Tamanho padrão
+                break;
+        }
+
+        if (range.startContainer.parentNode.nodeName === "SPAN") {
+            range.startContainer.parentNode.style.fontSize = span.style.fontSize;
+        } else {
+            range.surroundContents(span);
+        }
+
+        selection.removeAllRanges(); // Limpa a seleção após aplicar o estilo
+    }
 }
