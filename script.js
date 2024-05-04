@@ -219,3 +219,55 @@ window.onload = function() {
         document.getElementById('notesInput').innerHTML = savedNotes; // Usar innerHTML para restaurar formatação
     }
 };
+
+function toggleBold() {
+    let selection = window.getSelection();
+    if (selection.rangeCount > 0) {
+        let range = selection.getRangeAt(0);
+        let selectedText = range.toString().trim();
+
+        if (!selectedText) {
+            return; // Não faz nada se não houver texto selecionado
+        }
+
+        let span = range.startContainer.parentNode;
+
+        // Verifica se o elemento selecionado já é um span com estilo negrito
+        if (span.style.fontWeight === 'bold' || (span.style.fontWeight >= 600 && span.style.fontWeight <= 900)) {
+            // Remover o negrito substituindo o span pelo seu conteúdo
+            let textNode = document.createTextNode(span.textContent);
+            span.parentNode.replaceChild(textNode, span);
+            selection.removeAllRanges(); // Limpa a seleção
+        } else {
+            // Criar um novo span para o texto selecionado com estilo negrito
+            let newSpan = document.createElement("span");
+            newSpan.style.fontWeight = 'bold';
+            range.surroundContents(newSpan);
+            selection.removeAllRanges(); // Limpa a seleção após aplicar o estilo
+        }
+    }
+}
+
+
+
+
+
+
+
+
+function limpar() {
+    // Limpa todas as tarefas do DOM
+    document.getElementById('taskList').innerHTML = '';
+
+    // Limpa o conteúdo das notas
+    document.getElementById('notesInput').innerHTML = '';
+
+    // Limpa o localStorage removendo as entradas específicas
+    localStorage.removeItem('tasks');
+    localStorage.removeItem('notes');
+
+    // Reseta o temporizador, se necessário
+    clearInterval(timerId);
+    document.getElementById('timeRemaining').innerText = 'Tempo Restante: 00:00';
+    document.getElementById('timerInput').value = '';
+}

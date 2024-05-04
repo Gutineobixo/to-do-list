@@ -7,7 +7,9 @@ body {
     height: 100vh;
     margin: 0;
     position: relative;
+
 }
+
 
 .container {
     background: white;
@@ -95,7 +97,7 @@ button:hover {
     width: 350px; /* Largura inicial */
     min-width: 350px; /* Largura mínima de 350px */
     max-width: 500px; /* Largura máxima de 500px */
-    height: 100vh;
+    height: 95vh;
     background-color: #fff;
     box-shadow: -2px 0 5px rgba(0,0,0,0.1);
     padding: 20px;
@@ -136,4 +138,19 @@ button:hover {
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
     border: 0;
+}
+.clear-btn {
+    background-color: red;       /* Cor de fundo vermelha */
+    color: white;                /* Texto branco para contraste */
+    border: none;                /* Sem borda */
+    padding: 10px 20px;          /* Padding para tornar o botão maior */
+    border-radius: 5px;          /* Bordas arredondadas */
+    cursor: pointer;             /* Cursor de ponteiro para indicar que é clicável */
+    font-weight: bold;           /* Texto em negrito */
+    margin-top: 20px;            /* Margem superior para separá-lo de outros elementos */
+    transition: background-color 0.3s; /* Transição suave da cor de fundo */
+}
+
+.clear-btn:hover {
+    background-color: darkred;  /* Cor de fundo mais escura ao passar o mouse */
 }
